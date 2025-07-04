@@ -1,0 +1,26 @@
+public static void main(String[] args) {
+    PoemChatbot chatbot = new PoemChatbot();
+    Scanner scanner = new Scanner(System.in); // Initialize Scanner
+
+    System.out.println("Welcome to the Poem-Writing Chatbot!");
+    System.out.println("Please enter the first line of your poem:");
+
+    String firstLine = scanner.nextLine().trim(); // This line should wait for your input
+
+    if (firstLine.isEmpty()) {
+        System.out.println("You must enter a first line to generate a poem.");
+        scanner.close();
+        return; // Exit if input is empty
+    }
+
+    try {
+        System.out.println("\nGenerating poem...\n");
+        String poem = chatbot.generatePoem(firstLine);
+        System.out.println("Here is your generated poem:\n");
+        System.out.println(poem);
+    } catch (Exception e) {
+        System.err.println("Error generating poem: " + e.getMessage());
+    } finally {
+        scanner.close(); // Close the scanner
+    }
+}
